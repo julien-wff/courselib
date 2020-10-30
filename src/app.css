@@ -1,0 +1,18 @@
+/*noinspection CssInvalidAtRule*/
+@tailwind base;
+/*noinspection CssInvalidAtRule*/
+@tailwind components;
+/*noinspection CssInvalidAtRule*/
+@tailwind utilities;
+
+body {
+  font-family: 'Barlow', sans-serif;
+}
+
+h1 {
+  @apply text-2xl font-bold;
+}
+
+a {
+  @apply text-blue-500 cursor-pointer;
+}
