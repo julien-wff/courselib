@@ -27,17 +27,21 @@
             });
         });
         loadingText = 'Chargement du code';
-        if (!$user)
-            Router = await import(/* webpackChunkName: "loggedOutRouter" */'./pages/logged-out/LoggedOutRouter.svelte');
-        else
+        await setRouter($user);
+    }
+
+    async function setRouter(connected) {
+        if (connected)
             Router = await import(/* webpackChunkName: "loggedInRouter" */'./pages/logged-in/LoggedInRouter.svelte');
+        else
+            Router = await import(/* webpackChunkName: "loggedOutRouter" */'./pages/logged-out/LoggedOutRouter.svelte');
     }
 </script>
 
 {#await loadFirebase()}
     <Loading text={loadingText}/>
 {:then _}
-    <svelte:component this={Router.default}/>
+    <svelte:component this={Router.default} on:stateChange={ev => setRouter(ev.detail.connected)}/>
 {:catch error}
     {error}
 {/await}

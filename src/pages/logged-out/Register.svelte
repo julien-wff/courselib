@@ -1,5 +1,5 @@
 <script>
-    import { getContext } from 'svelte';
+    import { getContext, createEventDispatcher } from 'svelte';
     import SocialLogin from '../../components/ui/SocialLogin.svelte';
     import Button from '../../components/ui/Button.svelte';
     import TextInput from '../../components/ui/TextInput.svelte';
@@ -10,6 +10,8 @@
 
     const { firebase, getProvider } = getContext(firebaseContext);
     const auth = firebase().auth();
+
+    const dispatch = createEventDispatcher();
 
     let email, password, passwordConf;
     let loading = false;
@@ -23,6 +25,9 @@
         error = undefined;
         loading = true;
         auth.createUserWithEmailAndPassword(email, password)
+            .then(user => {
+                dispatch('signin', user);
+            })
             .catch(e => {
                 loading = false;
                 error = authError(e);
@@ -43,6 +48,9 @@
         }
 
         auth.signInWithPopup(provider)
+            .then(user => {
+                dispatch('signin', user);
+            })
             .catch(e => {
                 loading = false;
                 error = authError(e);

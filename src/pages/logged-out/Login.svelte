@@ -1,5 +1,5 @@
 <script>
-    import { getContext } from 'svelte';
+    import { getContext, createEventDispatcher } from 'svelte';
     import SocialLogin from '../../components/ui/SocialLogin.svelte';
     import Button from '../../components/ui/Button.svelte';
     import TextInput from '../../components/ui/TextInput.svelte';
@@ -15,10 +15,15 @@
     let loading = false;
     let error;
 
+    const dispatch = createEventDispatcher();
+
     function emailLogin() {
         error = undefined;
         loading = true;
         auth.signInWithEmailAndPassword(email, password)
+            .then(user => {
+                dispatch('signin', user);
+            })
             .catch(e => {
                 loading = false;
                 error = authError(e);
@@ -39,6 +44,9 @@
         }
 
         auth.signInWithPopup(provider)
+            .then(user => {
+                dispatch('signin', user);
+            })
             .catch(e => {
                 loading = false;
                 error = authError(e);
