@@ -3,6 +3,7 @@
     import CentredCard from '../../components/ui/CentredCard.svelte';
     import { userContext } from '../../contexts/contexts';
     import Step0 from './steps/Step0.svelte';
+    import Step1 from './steps/Step1.svelte';
 
     const user = getContext(userContext);
     let step;
@@ -11,6 +12,7 @@
 
     const stepsComponents = [
         Step0,
+        Step1
     ];
 </script>
 
