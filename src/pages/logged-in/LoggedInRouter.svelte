@@ -1,7 +1,6 @@
 <script>
     import Error from '../../components/ui/Error.svelte';
     import Loading from '../Loading.svelte';
-    import RegisterSteps from './RegisterSteps.svelte';
     import { Router, Route, navigate } from 'svelte-routing';
     import Button from '../../components/ui/Button.svelte';
     import CentredCard from '../../components/ui/CentredCard.svelte';
@@ -46,7 +45,6 @@
         {#await getRegisterSteps()}
             <Loading text="Chargement du code"/>
         {:then RegisterSteps}
-            <!--suppress JSUnresolvedVariable -->
             <svelte:component this={RegisterSteps.default}/>
         {:catch error}
             <Error {error}/>
