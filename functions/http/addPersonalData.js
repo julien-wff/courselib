@@ -25,7 +25,7 @@ module.exports = functions
             throw new functions.https.HttpsError('not-found', 'Impossible de trouver l\'utilisateur correspondant');
 
         if (userDoc.data().registerStep !== 1)
-            throw new functions.https.HttpsError('permission-denied', 'Vous avezdéjà effectué cette étape');
+            throw new functions.https.HttpsError('permission-denied', 'Vous avez déjà effectué cette étape');
 
         await userRef.update({
             ...data,
