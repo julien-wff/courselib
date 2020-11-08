@@ -11,7 +11,7 @@ module.exports = functions
 
         const code = data.code;
         if (!code || typeof code !== 'string' || !code.match(/^[A-Z0-9]{5}$/))
-            throw new functions.https.HttpsError('invalid-argument', 'Code finvalide');
+            throw new functions.https.HttpsError('invalid-argument', 'Code invalide');
 
         // Check if the user already exists
         const userRef = admin.firestore().doc(`users/${context.auth.uid}`);
