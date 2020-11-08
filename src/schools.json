@@ -10,6 +10,41 @@
       "svt": "Sciences de la vie et de la Terre",
       "si": "Sciences de l'ingénieur"
     },
+    "options": {
+      "euro-ang": {
+        "name": "Euro Anglais",
+        "incompatible": [
+          "euro-alld",
+          "highbac"
+        ]
+      },
+      "euro-alld": {
+        "name": "Euro Allemand",
+        "incompatible": [
+          "euro-ang",
+          "highbac"
+        ]
+      },
+      "highbac": {
+        "name": "Highbac",
+        "incompatible": [
+          "euro-alld",
+          "euro-ang"
+        ]
+      },
+      "maths-expert": {
+        "name": "Maths expertes",
+        "incompatible": [
+          "maths-comp"
+        ]
+      },
+      "maths-comp": {
+        "name": "Maths complémentaires",
+        "incompatible": [
+          "maths-expert"
+        ]
+      }
+    },
     "grades": {
       "terminale": {
         "name": "Terminale",

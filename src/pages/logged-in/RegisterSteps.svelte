@@ -5,6 +5,7 @@
     import Step0 from './steps/Step0.svelte';
     import Step1 from './steps/Step1.svelte';
     import Step2 from './steps/Step2.svelte';
+    import Step3 from './steps/Step3.svelte';
 
     const user = getContext(userContext);
     let step;
@@ -16,6 +17,7 @@
         Step0,
         Step1,
         Step2,
+        Step3,
     ];
 </script>
 

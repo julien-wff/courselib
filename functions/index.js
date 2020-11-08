@@ -10,3 +10,6 @@ exports.addPersonalData = require('./http/addPersonalData');
 
 // Register step 2
 exports.addSpecialities = require('./http/addSpecialities');
+
+// regsiter step 3
+exports.addOptions = require('./http/addOptions');
