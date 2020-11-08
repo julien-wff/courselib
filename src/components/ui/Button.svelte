@@ -6,6 +6,9 @@
         case 'primary':
             theme = 'bg-blue-600 text-white';
             break;
+        case 'primary-light':
+            theme = 'bg-blue-100 text-black';
+            break;
     }
 </script>
 

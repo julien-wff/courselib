@@ -7,3 +7,6 @@ exports.confirmMbnCode = require('./http/confirmMbnCode');
 
 // Register step 1
 exports.addPersonalData = require('./http/addPersonalData');
+
+// Register step 2
+exports.addSpecialities = require('./http/addSpecialities');

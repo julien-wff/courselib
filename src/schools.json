@@ -1,6 +1,15 @@
 {
   "57500-lcj": {
     "name": "Lycée Charles Jully",
+    "specialities": {
+      "geopo": "Histoire-géographie, géopolitique et sciences politiques",
+      "llce-ang": "Langues, littératures et cultures étrangères (Anglais)",
+      "maths": "Mathématiques",
+      "phy": "Physique-chimie",
+      "nsi": "Numérique et sciences de l'informatique",
+      "svt": "Sciences de la vie et de la Terre",
+      "si": "Sciences de l'ingénieur"
+    },
     "grades": {
       "terminale": {
         "name": "Terminale",
