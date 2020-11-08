@@ -7,6 +7,7 @@
 
     const user = getContext(userContext);
     let step;
+    let disabled = false;
 
     $: step = $user.prefs ? $user.prefs.registerStep : 0;
 
@@ -16,6 +17,6 @@
     ];
 </script>
 
-<CentredCard containerClass="2sm:bg-gray-200">
-    <svelte:component this={stepsComponents[step]}/>
+<CentredCard containerClass="2sm:bg-gray-200" {disabled}>
+    <svelte:component this={stepsComponents[step]} on:disable={() => disabled = true} on:enable={() => disabled = false}/>
 </CentredCard>

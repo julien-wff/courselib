@@ -1,5 +1,5 @@
 <script>
-    import { getContext, onMount } from 'svelte';
+    import { getContext, onMount, createEventDispatcher } from 'svelte';
     import Button from '../../../components/ui/Button.svelte';
     import TextInput from '../../../components/ui/TextInput.svelte';
     import { firebaseContext, userContext } from '../../../contexts/contexts';
@@ -8,6 +8,8 @@
     let user = getContext(userContext);
     const createUser = firebase().functions().httpsCallable('createUser');
     const confirmMbnCode = firebase().functions().httpsCallable('confirmMbnCode');
+
+    const dispatch = createEventDispatcher();
 
     let email = '',
         code = '',
@@ -34,6 +36,7 @@
             return error = 'Un email @monbureaunumerique.fr est requis.';
         }
         error = null;
+        dispatch('disable');
         createUser({ email })
             .then(({ data }) => {
                 if (data.action === 'verif') {
@@ -44,10 +47,12 @@
             .catch(e => {
                 console.error(e);
                 error = e.message;
-            });
+            })
+            .finally(() => dispatch('enable'));
     }
 
     function sendConfirmCode() {
+        dispatch('disable');
         confirmMbnCode({ code })
             .then(({ data }) => {
                 if (data.action === 'nextStep') {
@@ -64,7 +69,8 @@
             .catch(e => {
                 console.error(e);
                 error = e.message;
-            });
+            })
+            .finally(() => dispatch('enable'));
     }
 
     function modifyOrResendEmail() {

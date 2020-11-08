@@ -1,5 +1,5 @@
 <script>
-    import { getContext } from 'svelte';
+    import { getContext, createEventDispatcher } from 'svelte';
     import Select from '../../../components/ui/Select.svelte';
     import Button from '../../../components/ui/Button.svelte';
     import TextInput from '../../../components/ui/TextInput.svelte';
@@ -10,6 +10,8 @@
     const addPersonalData = firebase().functions().httpsCallable('addPersonalData');
 
     let user = getContext(userContext);
+
+    const dispatch = createEventDispatcher();
 
     let error = null;
 
@@ -48,6 +50,7 @@
 
     function handleFormSubmit() {
         error = null;
+        dispatch('disable');
         addPersonalData(data)
             .then(({ data: { action } }) => {
                 if (action === 'nextStep')
@@ -63,7 +66,8 @@
             .catch(e => {
                 console.error(e);
                 error = e.message;
-            });
+            })
+            .finally(() => dispatch('enable'));
     }
 </script>
 
