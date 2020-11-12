@@ -1,0 +1,22 @@
+{
+  "philosophie": "Philosophie",
+  "histoire": "Histoire",
+  "geographie": "Géographie",
+  "anglais": "Anglais",
+  "allemand": "Allemand",
+  "es": "Enseignement scientifique",
+
+  "geopo": "Histoire-géographie, géopolitique et sciences politiques",
+  "llce-ang": "Langues, littératures et cultures étrangères (Anglais)",
+  "maths": "Mathématiques",
+  "phy": "Physique-chimie",
+  "nsi": "Numérique et sciences de l'informatique",
+  "svt": "Sciences de la vie et de la Terre",
+  "si": "Sciences de l'ingénieur",
+
+  "euro-ang": "Euro Anglais",
+  "euro-alld": "Euro Allemand",
+  "highbac": "Highbac",
+  "maths-expert": "Maths expertes",
+  "maths-comp": "Maths complémentaires"
+}

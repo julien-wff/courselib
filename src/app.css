@@ -13,6 +13,18 @@ h1 {
   @apply text-2xl font-bold;
 }
 
+h2 {
+  @apply text-xl font-bold;
+}
+
+h3 {
+  @apply text-lg font-bold;
+}
+
+h4 {
+  @apply font-bold;
+}
+
 a {
   @apply text-blue-500 cursor-pointer;
 }

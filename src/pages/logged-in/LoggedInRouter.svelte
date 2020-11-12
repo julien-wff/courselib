@@ -1,17 +1,14 @@
 <script>
+    import Home from './Home.svelte';
     import Error from '../../components/ui/Error.svelte';
     import Loading from '../Loading.svelte';
     import { Router, Route, navigate } from 'svelte-routing';
-    import Button from '../../components/ui/Button.svelte';
-    import CentredCard from '../../components/ui/CentredCard.svelte';
     import { createEventDispatcher, getContext, onMount } from 'svelte';
-    import { firebaseContext, userContext } from '../../contexts/contexts';
+    import { userContext } from '../../contexts/contexts';
 
     const REGISTER_STEPS = 4;
 
     let user = getContext(userContext);
-    const { firebase } = getContext(firebaseContext);
-    const auth = firebase().auth();
 
     const dispatch = createEventDispatcher();
 
@@ -19,13 +16,16 @@
 
     onMount(() => {
         if (!$user.prefs || $user.prefs.registerStep < REGISTER_STEPS)
-            navigate(`/register`);
-    });
+            return navigate(`/register`);
 
-    function signOut() {
-        auth.signOut();
-        dispatch('stateChange', { connected: false });
-    }
+        if (window.location.pathname.match(/^\/home\/[a-z]{1,20}$/)) {
+            const path = window.location.pathname.split(/\//g)[2];
+            if ([...$user.prefs.classes, ...$user.prefs.specialities].includes(path))
+                return navigate(`/home/${path}`);
+        }
+
+        navigate(`/home/${$user.prefs.classes[1]}`);
+    });
 
     const getRegisterSteps = () => import(/* webpackChunkName: "registerSteps" */ './RegisterSteps.svelte');
 </script>
@@ -33,13 +33,7 @@
 
 <Router {url}>
 
-    <Route path="/">
-        <CentredCard>
-            <h1>Connecté en tant que {auth.currentUser.email}</h1>
-
-            <Button on:click={signOut} class="mt-4">Se déconnecter</Button>
-        </CentredCard>
-    </Route>
+    <Route path="/home/:subject" component={Home}/>
 
     <Route path="register">
         {#await getRegisterSteps()}
