@@ -30,7 +30,7 @@ module.exports = functions
 
         await userRef.update({
             ...data,
-            classes: commonClases[data.grade][data.way],
+            classes: commonClases[data.way][data.grade],
             registerStep: 2,
         });
 
