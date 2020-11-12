@@ -38,7 +38,8 @@
         "incompatible": [
           "maths-expert"
         ]
-      }
+      },
+      "espagnol": {}
     },
     "grades": {
       "terminale": {
