@@ -1,0 +1,12 @@
+{
+  "general": {
+    "term": {
+      "philosophie": "Philosophie",
+      "histoire": "Histoire",
+      "geographie": "Géographie",
+      "anglais": "Anglais",
+      "allemand": "Allemand",
+      "es": "Enseignement scientifique"
+    }
+  }
+}

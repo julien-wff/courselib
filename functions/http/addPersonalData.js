@@ -1,5 +1,6 @@
 const functions = require('firebase-functions');
 const admin = require('firebase-admin');
+const commonClases = require('../common-classes.json');
 
 module.exports = functions
     .region('europe-west1')
@@ -29,6 +30,7 @@ module.exports = functions
 
         await userRef.update({
             ...data,
+            classes: commonClases[data.grade][data.way],
             registerStep: 2,
         });
 
