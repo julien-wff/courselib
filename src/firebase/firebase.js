@@ -17,5 +17,6 @@ export const initFirebase = () => {
 
 export const PROVIDERS = {
     google: firebase.auth.GoogleAuthProvider,
+    facebook: firebase.auth.FacebookAuthProvider,
 };
 
