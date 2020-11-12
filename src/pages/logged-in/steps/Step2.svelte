@@ -3,6 +3,7 @@
     import { createEventDispatcher, getContext, onMount } from 'svelte';
     import { firebaseContext, userContext } from '../../../contexts/contexts';
     import schools from '../../../schools.json';
+    import subjects from '../../../subjects.json';
 
     let user = getContext(userContext);
     const { firebase } = getContext(firebaseContext);
@@ -12,10 +13,8 @@
 
     let specialities = [];
     onMount(() => {
-        const spes = schools[$user.prefs.school].specialities;
-        specialities = Object
-            .keys(spes)
-            .map(key => ({ key, name: spes[key], selected: false }));
+        specialities = schools[$user.prefs.school].specialities
+            .map(key => ({ key, name: subjects[key], selected: false }));
         maxSpesCount = $user.prefs.grade === 'terminale' ? 2 : 3;
     });
 

@@ -1,45 +1,40 @@
 {
   "57500-lcj": {
     "name": "Lycée Charles Jully",
-    "specialities": {
-      "geopo": "Histoire-géographie, géopolitique et sciences politiques",
-      "llce-ang": "Langues, littératures et cultures étrangères (Anglais)",
-      "maths": "Mathématiques",
-      "phy": "Physique-chimie",
-      "nsi": "Numérique et sciences de l'informatique",
-      "svt": "Sciences de la vie et de la Terre",
-      "si": "Sciences de l'ingénieur"
-    },
+    "specialities": [
+      "geopo",
+      "llce-ang",
+      "maths",
+      "phy",
+      "nsi",
+      "svt",
+      "si"
+    ],
     "options": {
       "euro-ang": {
-        "name": "Euro Anglais",
         "incompatible": [
           "euro-alld",
           "highbac"
         ]
       },
       "euro-alld": {
-        "name": "Euro Allemand",
         "incompatible": [
           "euro-ang",
           "highbac"
         ]
       },
       "highbac": {
-        "name": "Highbac",
         "incompatible": [
           "euro-alld",
           "euro-ang"
         ]
       },
       "maths-expert": {
-        "name": "Maths expertes",
         "incompatible": [
           "maths-comp"
         ]
       },
       "maths-comp": {
-        "name": "Maths complémentaires",
         "incompatible": [
           "maths-expert"
         ]

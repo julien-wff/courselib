@@ -4,6 +4,7 @@
     import { createEventDispatcher, getContext, onMount } from 'svelte';
     import { firebaseContext, userContext } from '../../../contexts/contexts';
     import schools from '../../../schools.json';
+    import subjects from '../../../subjects.json';
 
     let user = getContext(userContext);
     const { firebase } = getContext(firebaseContext);
@@ -18,7 +19,7 @@
             .keys(opts)
             .map(key => ({
                 key,
-                name: opts[key].name,
+                name: subjects[key],
                 selected: false,
                 incompatible: opts[key].incompatible || [],
                 // require: opts[key].require || [],
