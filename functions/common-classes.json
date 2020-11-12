@@ -1,12 +1,12 @@
 {
   "general": {
-    "terminale": {
-      "philosophie": "Philosophie",
-      "histoire": "Histoire",
-      "geographie": "Géographie",
-      "anglais": "Anglais",
-      "allemand": "Allemand",
-      "es": "Enseignement scientifique"
-    }
+    "terminale": [
+      "philosophie",
+      "histoire",
+      "geographie",
+      "anglais",
+      "allemand",
+      "es"
+    ]
   }
 }
