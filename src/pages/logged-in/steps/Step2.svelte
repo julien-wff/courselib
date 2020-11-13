@@ -6,8 +6,8 @@
     import subjects from '../../../subjects.json';
 
     let user = getContext(userContext);
-    const { firebase } = getContext(firebaseContext);
-    const addSpecialities = firebase().functions().httpsCallable('addSpecialities');
+    const { callFunction } = getContext(firebaseContext);
+    const addSpecialities = callFunction('addSpecialities');
 
     const dispatch = createEventDispatcher();
 

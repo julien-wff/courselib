@@ -6,8 +6,8 @@
     import { firebaseContext, userContext } from '../../../contexts/contexts';
     import schools from '../../../schools.json';
 
-    const { firebase } = getContext(firebaseContext);
-    const addPersonalData = firebase().functions().httpsCallable('addPersonalData');
+    const { callFunction } = getContext(firebaseContext);
+    const addPersonalData = callFunction('addPersonalData');
 
     let user = getContext(userContext);
 

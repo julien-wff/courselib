@@ -4,10 +4,10 @@
     import TextInput from '../../../components/ui/TextInput.svelte';
     import { firebaseContext, userContext } from '../../../contexts/contexts';
 
-    const { firebase } = getContext(firebaseContext);
+    const { callFunction } = getContext(firebaseContext);
     let user = getContext(userContext);
-    const createUser = firebase().functions().httpsCallable('createUser');
-    const confirmMbnCode = firebase().functions().httpsCallable('confirmMbnCode');
+    const createUser = callFunction('createUser');
+    const confirmMbnCode = callFunction('confirmMbnCode');
 
     const dispatch = createEventDispatcher();
 

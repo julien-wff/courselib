@@ -10,6 +10,7 @@
     let firebase, providers;
     setContext(firebaseContext, {
         firebase: () => firebase,
+        callFunction: name => firebase.app().functions('europe-west1').httpsCallable(name),
         getProvider: name => providers[name] && new providers[name](),
     });
 
