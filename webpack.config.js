@@ -102,7 +102,14 @@ module.exports = {
                                 ident: 'postcss',
                                 plugins: [
                                     require('tailwindcss'),
-                                    require('autoprefixer'),
+                                    ...process.env.NODE_ENV === 'production'
+                                        ? [
+                                            require('autoprefixer'),
+                                            require('cssnano')({
+                                                preset: 'default',
+                                            }),
+                                        ]
+                                        : []
                                 ],
                             },
                         }
