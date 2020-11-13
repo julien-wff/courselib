@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "start": "webpack-dev-server",
-    "build": "cross-env NODE_ENV=production webpack --mode production --progress"
+    "build": "cross-env NODE_ENV=production webpack --mode production --progress",
+    "deploy": "netlify deploy --prod -d dist"
   },
   "devDependencies": {
     "@ckeditor/ckeditor5-autoformat": "^23.0.0",
