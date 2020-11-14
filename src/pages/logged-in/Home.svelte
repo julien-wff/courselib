@@ -1,12 +1,11 @@
 <script>
+    import Layout from '../../components/ui/Layout.svelte';
     import NewCourse from './home/NewCourse.svelte';
     import Button from '../../components/ui/Button.svelte';
     import Popup from '../../components/ui/Popup.svelte';
     import { getContext } from 'svelte';
     import { navigate } from 'svelte-routing';
     import { Link } from 'svelte-routing';
-    import Header from '../../components/ui/Header.svelte';
-    import Nav from '../../components/ui/Nav.svelte';
     import { firebaseContext, userContext } from '../../contexts/contexts';
     import subjectsLocales from '../../subjects.json';
 
@@ -22,9 +21,9 @@
     let popup = null;
 </script>
 
-<div class="w-full min-h-screen flex flex-row bg-gray-200">
+<Layout>
 
-    <Nav>
+    <div slot="nav">
         <h2 style="line-height: 36px" class="mb-2">Matières disponibles</h2>
         {#each Object.keys(subjects) as key}
             <Link to="/home/{key}">
@@ -43,19 +42,14 @@
             <span class="text-black block py-1">Profil</span>
         </Link>
         <span class="text-black block py-1 cursor-pointer" on:click={() => popup = 'disconnect'}>Déconnexion</span>
-    </Nav>
-
-    <div class="flex-1 flex flex-col">
-
-        <Header>
-            <h1>{subjects[subject]}</h1>
-        </Header>
-
-        <div>Cours dispos</div>
-
     </div>
 
-</div>
+    <h1 slot="header">{subjects[subject]}</h1>
+
+    <div slot="main">Cours dispos</div>
+
+</Layout>
+
 
 {#if popup === 'disconnect'}
     <Popup>
