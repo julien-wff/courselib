@@ -10,6 +10,10 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 
+const hash = process.env.NODE_ENV === 'production'
+    ? '[contenthash:8]'
+    : '[hash:8]';
+
 module.exports = {
     devtool: 'source-map',
     performance: { hints: false },
@@ -20,8 +24,8 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         publicPath: '/',
-        filename: 'app.[hash:8].js',
-        chunkFilename: '[name].[hash:8].js',
+        filename: `app.${hash}.js`,
+        chunkFilename: `[name].${hash}.js`,
     },
 
     optimization: {
@@ -52,8 +56,8 @@ module.exports = {
             ]
         }),
         new MiniCssExtractPlugin({
-            filename: 'app.[hash:8].css',
-            chunkFilename: '[name].[hash:8].css',
+            filename: `app.${hash}.css`,
+            chunkFilename: `[name].${hash}.css`,
             ignoreOrder: false,
         }),
         // new CKEditorWebpackPlugin({
