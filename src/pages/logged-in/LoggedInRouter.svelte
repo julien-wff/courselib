@@ -25,7 +25,7 @@
                 return navigate(`/home/${path}`);
         }
 
-        navigate(`/home/${$user.prefs.classes[1]}`);
+        navigate(`/home/${$user.prefs.classes[0]}`);
     });
 </script>
 
