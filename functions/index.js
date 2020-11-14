@@ -13,3 +13,6 @@ exports.addSpecialities = require('./http/addSpecialities');
 
 // regsiter step 3
 exports.addOptions = require('./http/addOptions');
+
+// Course creation
+exports.createCourse = require('./http/createCourse');
