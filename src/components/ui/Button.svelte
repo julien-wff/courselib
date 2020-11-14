@@ -9,6 +9,9 @@
         case 'primary-light':
             theme = 'bg-blue-100 text-black';
             break;
+        case 'secondary':
+            theme = 'bg-gray-300 text-black';
+            break;
     }
 </script>
 
