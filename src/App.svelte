@@ -13,6 +13,12 @@
         firebase: () => firebase,
         callFunction: name => firebase.app().functions('europe-west1').httpsCallable(name),
         getProvider: name => providers[name] && new providers[name](),
+        disconnect: redirectFunction => {
+            firebase.auth().signOut();
+            if (redirectFunction)
+                redirectFunction('/login');
+            setRouter(false);
+        }
     });
 
     let user = writable({
