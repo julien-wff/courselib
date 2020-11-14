@@ -1,4 +1,5 @@
 <script>
+    import { getFirebase, getLoggedInRouter, getLoggedOutRouter } from './chunks';
     import Error from './components/ui/Error.svelte';
     import { setContext } from 'svelte';
     import { writable } from 'svelte/store';
@@ -24,7 +25,7 @@
 
 
     async function loadFirebase() {
-        const { initFirebase, PROVIDERS } = await import(/* webpackChunkName: "firebase" */ './firebase/firebase');
+        const { initFirebase, PROVIDERS } = await getFirebase();
         firebase = initFirebase();
         providers = PROVIDERS;
 
@@ -50,16 +51,16 @@
 
     async function setRouter(connected) {
         if (connected)
-            Router = await import(/* webpackChunkName: "loggedInRouter" */'./pages/logged-in/LoggedInRouter.svelte');
+            Router = await getLoggedInRouter();
         else
-            Router = await import(/* webpackChunkName: "loggedOutRouter" */'./pages/logged-out/LoggedOutRouter.svelte');
+            Router = await getLoggedOutRouter();
     }
 </script>
 
 {#await loadFirebase()}
     <Loading text={loadingText}/>
 {:then _}
-    <svelte:component this={Router.default} on:stateChange={ev => setRouter(ev.detail.connected)}/>
+    <svelte:component this={Router} on:stateChange={ev => setRouter(ev.detail.connected)}/>
 {:catch error}
     <Error {error}/>
 {/await}

@@ -5,6 +5,7 @@
     import { Router, Route, navigate } from 'svelte-routing';
     import { createEventDispatcher, getContext, onMount } from 'svelte';
     import { userContext } from '../../contexts/contexts';
+    import { getRegisterSteps } from '../../chunks';
 
     const REGISTER_STEPS = 4;
 
@@ -26,8 +27,6 @@
 
         navigate(`/home/${$user.prefs.classes[1]}`);
     });
-
-    const getRegisterSteps = () => import(/* webpackChunkName: "registerSteps" */ './RegisterSteps.svelte');
 </script>
 
 
@@ -39,7 +38,7 @@
         {#await getRegisterSteps()}
             <Loading text="Chargement du code"/>
         {:then RegisterSteps}
-            <svelte:component this={RegisterSteps.default}/>
+            <svelte:component this={RegisterSteps}/>
         {:catch error}
             <Error {error}/>
         {/await}
