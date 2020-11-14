@@ -16,7 +16,7 @@
 
     onMount(() => {
         if (!$user.prefs || $user.prefs.registerStep < REGISTER_STEPS)
-            return navigate(`/register`);
+            return navigate(`/register-steps`);
 
         if (window.location.pathname.match(/^\/home\/[a-z]{1,20}$/)) {
             const path = window.location.pathname.split(/\//g)[2];
@@ -35,7 +35,7 @@
 
     <Route path="/home/:subject" component={Home}/>
 
-    <Route path="register">
+    <Route path="register-steps">
         {#await getRegisterSteps()}
             <Loading text="Chargement du code"/>
         {:then RegisterSteps}
