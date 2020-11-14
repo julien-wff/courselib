@@ -11,7 +11,9 @@
     let firebase, providers;
     setContext(firebaseContext, {
         firebase: () => firebase,
-        callFunction: name => firebase.app().functions('europe-west1').httpsCallable(name),
+        callFunction: name => process.env.NODE_ENV !== 'production'
+            ? firebase.functions().httpsCallable(name)
+            : firebase.app().functions('europe-west1').httpsCallable(name),
         getProvider: name => providers[name] && new providers[name](),
         disconnect: redirectFunction => {
             firebase.auth().signOut();
