@@ -1,5 +1,4 @@
 <script>
-    import { navigate } from 'svelte-routing';
     import Button from '../../../components/ui/Button.svelte';
     import { createEventDispatcher, getContext, onMount } from 'svelte';
     import { firebaseContext, userContext } from '../../../contexts/contexts';
@@ -63,7 +62,7 @@
                             registerStep: 4,
                         }
                     };
-                    navigate('/');
+                    dispatch('finish');
                 }
             })
             .catch(e => {

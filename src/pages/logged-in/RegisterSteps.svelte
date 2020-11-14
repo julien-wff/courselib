@@ -1,5 +1,6 @@
 <script>
     import { getContext } from 'svelte';
+    import { navigate } from 'svelte-routing';
     import CentredCard from '../../components/ui/CentredCard.svelte';
     import { userContext } from '../../contexts/contexts';
     import Step0 from './steps/Step0.svelte';
@@ -19,11 +20,16 @@
         Step2,
         Step3,
     ];
+
+    function finish() {
+        navigate(`/home/${$user.prefs.classes[0]}`);
+    }
 </script>
 
 <CentredCard containerClass="2sm:bg-gray-200" {disabled}>
     <svelte:component
             this={stepsComponents[step]}
             on:disable={() => disabled = true}
-            on:enable={() => disabled = false}/>
+            on:enable={() => disabled = false}
+            on:finish={finish}/>
 </CentredCard>
