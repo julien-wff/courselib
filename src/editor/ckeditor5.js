@@ -4,8 +4,8 @@ import Autolink from '@ckeditor/ckeditor5-link/src/autolink.js';
 import Autosave from '@ckeditor/ckeditor5-autosave/src/autosave.js';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold.js';
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials.js';
-import ExportToPDF from '@ckeditor/ckeditor5-export-pdf/src/exportpdf.js';
-import ExportToWord from '@ckeditor/ckeditor5-export-word/src/exportword.js';
+// import ExportToPDF from '@ckeditor/ckeditor5-export-pdf/src/exportpdf.js';
+// import ExportToWord from '@ckeditor/ckeditor5-export-word/src/exportword.js';
 import FontColor from '@ckeditor/ckeditor5-font/src/fontcolor.js';
 import Heading from '@ckeditor/ckeditor5-heading/src/heading.js';
 import Image from '@ckeditor/ckeditor5-image/src/image.js';
@@ -18,7 +18,7 @@ import IndentBlock from '@ckeditor/ckeditor5-indent/src/indentblock.js';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic.js';
 import Link from '@ckeditor/ckeditor5-link/src/link.js';
 import List from '@ckeditor/ckeditor5-list/src/list.js';
-import MathType from '@wiris/mathtype-ckeditor5';
+// import MathType from '@wiris/mathtype-ckeditor5';
 import MediaEmbed from '@ckeditor/ckeditor5-media-embed/src/mediaembed.js';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph.js';
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice';
@@ -58,6 +58,7 @@ class Editor extends ClassicEditor {
     }
 }
 
+// TODO: Fix plugins import bug
 
 // Plugins to include in the build.
 Editor.builtinPlugins = [
@@ -66,8 +67,8 @@ Editor.builtinPlugins = [
     Autosave,
     Bold,
     Essentials,
-    ExportToPDF,
-    ExportToWord,
+    // ExportToPDF,
+    // ExportToWord,
     FontColor,
     Heading,
     Image,
@@ -80,7 +81,7 @@ Editor.builtinPlugins = [
     Italic,
     Link,
     List,
-    MathType,
+    // MathType,
     MediaEmbed,
     Paragraph,
     PasteFromOffice,
@@ -97,6 +98,4 @@ Editor.builtinPlugins = [
     Underline
 ];
 
-export { Editor, Watchdog };
-
-export { createEditor } from './create-editor';
+export default { Editor, Watchdog };

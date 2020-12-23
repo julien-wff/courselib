@@ -9,6 +9,10 @@ export const getLoggedInRouter = () => import(/* webpackChunkName: "loggedInRout
 export const getLoggedOutRouter = () => import(/* webpackChunkName: "loggedOutRouter" */'./pages/logged-out/LoggedOutRouter.svelte')
     .then(c => c.default);
 
+export const getEditor = () => import(/* webpackChunkName: "ckeditor" */'./editor/Editor.svelte')
+    .then(c => c.default);
+
+
 // ----- MODULES -----
 
 export const getFirebase = () => import(/* webpackChunkName: "firebase" */ './firebase/firebase');

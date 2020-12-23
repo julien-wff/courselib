@@ -7,15 +7,13 @@
 export function createEditor(CKeditor, mountElement, errCallback = undefined, finishCallback = undefined) {
 
     const watchdog = new CKeditor.Watchdog();
-    errCallback = errCallback || handleError;
-
-    window.watchdog = watchdog;
+    errCallback = errCallback || console.error;
 
     watchdog.setCreator((element, config) => {
         return CKeditor.Editor
             .create(element, config)
             .then(editor => {
-                window.editor = editor;
+                finishCallback(editor);
                 return editor;
             });
     });
@@ -63,6 +61,7 @@ export function createEditor(CKeditor, mountElement, errCallback = undefined, fi
                 ]
             },
             language: 'fr',
+            shouldNotGroupWhenFull: false,
             image: {
                 toolbar: [
                     'imageTextAlternative',
@@ -82,13 +81,5 @@ export function createEditor(CKeditor, mountElement, errCallback = undefined, fi
             licenseKey: '',
 
         })
-        .then(finishCallback)
         .catch(errCallback);
-
-    function handleError(error) {
-        console.error('Oops, something went wrong!');
-        console.error('Please, report the following error on https://github.com/ckeditor/ckeditor5/issues with the build id and the error stack trace:');
-        console.error(error);
-        console.warn('Build id: 7bgxqar1rkyy-wg5kcj9k9q4v');
-    }
 }

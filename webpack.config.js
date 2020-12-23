@@ -60,10 +60,10 @@ module.exports = {
             chunkFilename: `[name].${hash}.css`,
             ignoreOrder: false,
         }),
-        // new CKEditorWebpackPlugin({
-        //     language: 'fr',
-        //     translationsOutputFile: /^ckeditor\.[0-9a-f]{8}\.js$/,
-        // }),
+        new CKEditorWebpackPlugin({
+            language: 'fr',
+            translationsOutputFile: /^ckeditor\.[0-9a-f]{8}\.js$/,
+        }),
     ],
 
     module: {
@@ -80,6 +80,7 @@ module.exports = {
             },
             {
                 test: /\.(png|svg|jpg|gif)$/,
+                exclude: [/node_modules/],
                 use: [
                     {
                         loader: 'url-loader',
@@ -88,6 +89,10 @@ module.exports = {
                         },
                     },
                 ],
+            },
+            {
+                test: /\.svg$/,
+                use: ['raw-loader']
             },
             {
                 test: /\.css$/,
@@ -120,28 +125,28 @@ module.exports = {
                     },
                 ]
             },
-            // {
-            //     test: /ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css$/,
-            //     use: [
-            //         {
-            //             loader: MiniCssExtractPlugin.loader,
-            //         },
-            //         {
-            //             loader: 'css-loader'
-            //         },
-            //         {
-            //             loader: 'postcss-loader',
-            //             options: {
-            //                 postcssOptions: styles.getPostCssConfig({
-            //                     themeImporter: {
-            //                         themePath: require.resolve('@ckeditor/ckeditor5-theme-lark')
-            //                     },
-            //                     minify: true
-            //                 })
-            //             }
-            //         },
-            //     ]
-            // }
+            {
+                test: /ckeditor5-[^/\\]+[/\\]theme[/\\].+\.css$/,
+                use: [
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            postcssOptions: styles.getPostCssConfig({
+                                themeImporter: {
+                                    themePath: require.resolve('@ckeditor/ckeditor5-theme-lark')
+                                },
+                                minify: true
+                            })
+                        }
+                    },
+                ]
+            }
         ]
     },
 

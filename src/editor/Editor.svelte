@@ -1,29 +1,37 @@
 <script>
-    let state = 'Chargement de la librairie';
-    let editorDiv;
+    import { createEventDispatcher, onMount } from 'svelte';
+    import CKeditor from './ckeditor5';
+    import { createEditor } from './create-editor';
 
-    async function loadEditor() {
-        const CKeditor = await import(/* webpackChunkName: "ckeditor" */'./ckeditor5');
-        state = 'Chargement de l\'éditeur';
-        CKeditor.createEditor(
+    export let initialData;
+    export let showWhileLoading = false;
+
+    const dispatch = createEventDispatcher();
+
+    let editorDiv, loaded = false;
+
+    onMount(() => {
+        createEditor(
             CKeditor,
             editorDiv,
-            undefined,
-            () => state = null,
+            err => dispatch('error', err),
+            editor => {
+                loaded = true;
+                editor.sourceElement.nextSibling.style.width = '100%';
+                dispatch('load', editor);
+            },
         );
-    }
-
-    loadEditor();
+    });
 </script>
 
+
 <style>
-  .hidden {
-    display: none;
-  }
+    :global(.ck-editor__editable) {
+        max-height: calc(100vh - 150px);
+    }
 </style>
 
-{#if state}
-    Etape : {state}
-{/if}
 
-<div id="editor" bind:this={editorDiv} class:hidden={!!state}/>
+<div id="editor" bind:this={editorDiv} class="{!showWhileLoading && !loaded ? 'hidden' : ''} {$$props.class || ''}">
+    {@html initialData}
+</div>
