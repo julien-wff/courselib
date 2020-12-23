@@ -4,7 +4,14 @@
 </script>
 
 
-<div class="w-full min-h-screen flex flex-row bg-gray-200">
+<style>
+    main {
+        width: calc(100vw - 300px);
+    }
+</style>
+
+
+<div class="w-screen min-h-screen flex flex-row bg-gray-200">
 
     <Nav>
         <slot name="nav"/>
