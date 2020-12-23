@@ -73,7 +73,7 @@
             <TextInput label="Email" type="email" required bind:value={email}/>
             <TextInput label="Mot de passe" type="password" required bind:value={password}/>
             <TextInput label="Confirmer le mot de passe" type="password" required bind:value={passwordConf}/>
-            <Button class="inline-block w-full">Se connecter</Button>
+            <Button class="inline-block w-full">Créer un compte</Button>
         </form>
 
         <div>
