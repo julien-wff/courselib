@@ -28,3 +28,7 @@ h4 {
 a {
   @apply text-blue-500 cursor-pointer;
 }
+
+.backdrop {
+  background: rgba(.2, .2, .2, .3);
+}
