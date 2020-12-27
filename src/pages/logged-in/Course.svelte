@@ -7,6 +7,7 @@
     import { getContext } from 'svelte';
     import { firebaseContext } from '../../contexts/contexts';
     import subjectLocales from '../../subjects.json';
+    import { Link } from 'svelte-routing';
 
     export let courseId;
 
@@ -39,6 +40,13 @@
     </Center>
 {:then _}
     <Layout>
+        <div slot="nav">
+            <Link to="/home/{courseData.class}">
+                <h2 class="text-black" style="line-height: 36px">Retour à l'accueil</h2>
+            </Link>
+            <h2 class="cursor-pointer mt-6">Enregistrer les modifications</h2>
+            <h2 class="mt-6">Table des matières</h2>
+        </div>
         <h1 slot="header">{subjectLocales[courseData.class] || courseData.class} - {courseData.name}</h1>
         <div slot="main" class="md:p-4 flex justify-center w-full">
             <div class="max-w-5xl w-full">
