@@ -154,6 +154,7 @@ module.exports = {
         contentBase: path.join(__dirname, 'dist'),
         port: 8000,
         overlay: true,
-        historyApiFallback: true
+        historyApiFallback: true,
+        host: '0.0.0.0',
     }
 };
