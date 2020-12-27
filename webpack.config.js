@@ -92,6 +92,7 @@ module.exports = {
             },
             {
                 test: /\.svg$/,
+                exclude: path.resolve(__dirname, 'src'),
                 use: ['raw-loader']
             },
             {
