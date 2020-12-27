@@ -9,7 +9,7 @@ export const initFirebase = () => {
     firebase.initializeApp(config);
     firebase.analytics();
     if (process.env.NODE_ENV !== 'production')
-        firebase.functions().useEmulator('localhost', 5001);
+        firebase.functions().useEmulator(window.location.hostname, 5001);
 
     return firebase;
 };
