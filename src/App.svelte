@@ -65,10 +65,15 @@
     }
 </script>
 
-{#await loadFirebase()}
-    <Loading text={loadingText}/>
-{:then _}
-    <svelte:component this={Router} on:stateChange={ev => setRouter(ev.detail.connected)}/>
-{:catch error}
-    <Error {error}/>
-{/await}
+
+<div class="w-screen h-screen relative overflow-hidden" id="app">
+
+    {#await loadFirebase()}
+        <Loading text={loadingText}/>
+    {:then _}
+        <svelte:component this={Router} on:stateChange={ev => setRouter(ev.detail.connected)}/>
+    {:catch error}
+        <Error {error}/>
+    {/await}
+
+</div>

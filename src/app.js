@@ -1,7 +1,6 @@
 import App from './App.svelte';
 import './app.css';
 
-document.body.classList.add('overflow-hidden');
 
 const app = new App({
     target: document.body,
