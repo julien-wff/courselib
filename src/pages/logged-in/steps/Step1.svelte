@@ -52,15 +52,13 @@
         error = null;
         dispatch('disable');
         addPersonalData(data)
-            .then(({ data: { action } }) => {
-                if (action === 'nextStep')
-                    $user = {
-                        ...$user,
-                        prefs: {
-                            ...$user.prefs,
-                            registerStep: 2,
-                            ...data,
-                        }
+            .then(({ data: resData }) => {
+                if (resData.action === 'nextStep')
+                    $user.prefs = {
+                        ...$user.prefs,
+                        registerStep: 2,
+                        ...data,
+                        classes: resData.classes,
                     };
             })
             .catch(e => {

@@ -28,15 +28,18 @@ module.exports = functions
         if (userDoc.data().registerStep !== 1)
             throw new functions.https.HttpsError('permission-denied', 'Vous avez déjà effectué cette étape');
 
+        const classes = commonClases[data.way][data.grade];
+
         await userRef.update({
             ...data,
-            classes: commonClases[data.way][data.grade],
+            classes,
             registerStep: 2,
         });
 
         return {
             nextStep: true,
             action: 'nextStep',
+            classes,
         };
 
     });
