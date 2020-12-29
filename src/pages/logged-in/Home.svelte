@@ -23,25 +23,29 @@
 
 <Layout>
 
-    <div slot="nav">
+    <div slot="nav" let:hideNav>
         <h2 style="line-height: 36px" class="mb-2">Matières disponibles</h2>
         {#each Object.keys(subjects) as key}
             <Link to="/home/{key}">
-                <span class="block py-1 {subject === key ? 'text-blue-700' : 'text-black'}">
+                <span class="block py-1 {subject === key ? 'text-blue-700' : 'text-black'}" on:click={hideNav}>
                     {subjects[key]}
                 </span>
             </Link>
         {/each}
 
         <h2 style="line-height: 36px" class="mb-2 mt-8">Créer</h2>
-        <span class="text-black block py-1 cursor-pointer" on:click={() => popup = 'new-course'}>Nouveau cours</span>
-        <span class="text-black block py-1 cursor-pointer">Nouvelle fiche de révision</span>
+        <span class="text-black block py-1 cursor-pointer" on:click={() => popup = 'new-course'} on:click={hideNav}>
+            Nouveau cours
+        </span>
+        <span class="text-black block py-1 cursor-pointer" on:click={hideNav}>Nouvelle fiche de révision</span>
 
         <h2 style="line-height: 36px" class="mb-2 mt-8">Compte</h2>
         <Link to="/profile">
-            <span class="text-black block py-1">Profil</span>
+            <span class="text-black block py-1" on:click={hideNav}>Profil</span>
         </Link>
-        <span class="text-black block py-1 cursor-pointer" on:click={() => popup = 'disconnect'}>Déconnexion</span>
+        <span class="text-black block py-1 cursor-pointer" on:click={() => popup = 'disconnect'} on:click={hideNav}>
+            Déconnexion
+        </span>
     </div>
 
     <h1 slot="header">{subjects[subject]}</h1>
