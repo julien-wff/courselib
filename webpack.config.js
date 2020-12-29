@@ -62,6 +62,7 @@ module.exports = {
                     options: {
                         emitCss: true,
                         hotReload: true,
+                        dev: process.env.NODE_ENV !== 'production',
                     }
                 }
             },
