@@ -7,5 +7,11 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow&display=swap">
 </head>
 <body class="bg-gray-200">
+<% if (process.env.NODE_ENV === 'production') { %>
+    <!-- Cloudflare Web Analytics -->
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+            data-cf-beacon='{"token": "071f6f5c702a4c328aed66faf366e003"}'></script>
+    <!-- End Cloudflare Web Analytics -->
+<% } %>
 </body>
 </html>
