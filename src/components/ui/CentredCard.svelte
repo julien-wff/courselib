@@ -18,7 +18,7 @@
 
 <Container wFull hFull class="{containerClass}">
     <Center>
-        <div class="bg-white 2sm:rounded-md 2sm:shadow-md 2sm:p-8 p-4 w-full 2sm:w-100 2sm:relative {$$props.class || ''}">
+        <div class="bg-white 2sm:rounded-md 2sm:shadow-md 2sm:p-8 p-4 w-full 2sm:w-96 2sm:relative {$$props.class || ''}">
             {#if disabled}
                 <div
                         transition:fade={{duration: 100}}
