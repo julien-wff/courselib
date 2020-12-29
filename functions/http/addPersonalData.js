@@ -30,11 +30,10 @@ module.exports = functions
 
         const classes = commonClases[data.way][data.grade];
 
-        await userRef.update({
-            ...data,
+        await userRef.update(Object.assign(data, {
             classes,
             registerStep: 2,
-        });
+        }));
 
         return {
             nextStep: true,
