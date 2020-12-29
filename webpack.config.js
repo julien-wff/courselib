@@ -8,7 +8,6 @@ const TerserWebpackPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 
 const hash = process.env.NODE_ENV === 'production'
     ? '[contenthash:8]'
@@ -40,20 +39,8 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title: 'Courselib',
-            filename: 'index.html',
-            meta: {
-                viewport: 'width=device-width, initial-scale=1, shrink-to-fit=no'
-            }
-        }),
-        new HtmlWebpackTagsPlugin({
-            tags: [
-                {
-                    path: 'https://fonts.googleapis.com/css2?family=Barlow&display=swap',
-                    type: 'css',
-                    publicPath: false,
-                }
-            ]
+            template: './src/index.ejs',
+            scriptLoading: 'defer',
         }),
         new MiniCssExtractPlugin({
             filename: `app.${hash}.css`,
