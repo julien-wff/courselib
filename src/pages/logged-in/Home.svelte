@@ -56,7 +56,7 @@
 
 
 {#if popup === 'disconnect'}
-    <Popup>
+    <Popup on:close={() => popup = false}>
         <h1 class="text-center">Déconnexion</h1>
         <p class="my-8">Êtes-vous sûr de vouloir vous déconnecter ?</p>
         <div class="flex justify-between">
