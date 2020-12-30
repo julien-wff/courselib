@@ -19,6 +19,7 @@
         name: '',
         category: 'none',
         subject,
+        index: null,
     };
     let disabled = false, error = null;
 
@@ -56,6 +57,8 @@
         <div class="flex justify-end mb-4">
             <span class="text-right cursor-pointer text-blue-500">Nouvelle catégorie</span>
         </div>
+
+        <TextInput label="Numéro du chapitre (optionnel)" type="number" min="0" bind:value={newCourseData.index}/>
 
         <div class="flex justify-between inline-block">
             <Button type="button" variant="secondary" class="flex-1 mr-2" on:click={() => dispatch('close')}>

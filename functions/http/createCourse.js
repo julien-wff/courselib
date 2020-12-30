@@ -19,16 +19,18 @@ module.exports = functions
         const userData = userDoc.data();
 
         const newCourse = await admin.firestore().collection('courses').add({
+            school: userData.school,
+            way: userData.way,
+            grade: userData.grade,
+            class: data.subject,
+            name: data.name,
             createdAt: admin.firestore.FieldValue.serverTimestamp(),
             createdBy: context.auth.uid,
             modifiedAt: admin.firestore.FieldValue.serverTimestamp(),
+            modifiedBy: context.auth.uid,
             version: 0,
-            school: userData.school,
-            grade: userData.grade,
-            way: userData.way,
-            class: data.subject,
-            name: data.name,
-            category: data.category,
+            category: data.category || null,
+            index: data.index,
         });
 
         return {
